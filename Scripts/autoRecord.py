@@ -10,13 +10,13 @@ while countdown > 0:
 
 #region First Criteria: need to be able to set the camera to a reliable place
 #region index camera z level
-HoldAndReleaseKey(N, .01) #zoom 
-HoldAndReleaseKey(N, .01) #make sure we're all the way in
-HoldAndReleaseKey(N, .01) #all the way in if it's stepped out
-HoldAndReleaseKey(N, .01) #all the way in
-HoldAndReleaseKey(N, .01) #allllll the way in
-HoldAndReleaseKey(B, .01) #Zoom Out
-HoldAndReleaseKey(B, .01) #More
+HoldAndReleaseKey(N, .02) #zoom 
+HoldAndReleaseKey(N, .02) #make sure we're all the way in
+HoldAndReleaseKey(N, .02) #all the way in if it's stepped out
+HoldAndReleaseKey(N, .02) #all the way in
+HoldAndReleaseKey(N, .02) #allllll the way in
+HoldAndReleaseKey(B, .02) #Zoom Out
+HoldAndReleaseKey(B, .02) #More
 #endregion
 
 #Region Index Camera to SW Corner
@@ -29,6 +29,8 @@ HoldAndReleaseKey2(A, S, 6)
 #EndRegion
 
 #needs further testing!
+#Panning speed is tied to framerate, if it goes down so will your camera speed, leaving you in a different spot.  You may need to lower your max fps or resolution to get a consistent place
+#even then, work in progress
 #Region Move into Recording Position
 #Move into position with slow pan remapped to J K L I
 print("Move Right for 25 Seconds")
