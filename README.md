@@ -1,14 +1,14 @@
 Feel free to use these saves and scripts in any way you see fit, I retain no rights or license.  If you'd like to credit me I'd be grateful! https://www.youtube.com/@deighv
 
-##Scripts:
+## Scripts:
 
-###autoCommit.ps1 -
+### autoCommit.ps1 -
 This will backup every autosave/manual save into a git repo.  Think of the content creation possibilities of being able to go back to any point in time of your base!  I have 2200 saves from Split River Plains in total (it's about 9gb).
 
-###create-autoCommit.exe.ps1
+### create-autoCommit.exe.ps1
 Creates an executable for autoCommit if you want to run it on startup/that's easier for you.
 
-###autoRecord.py -
+### autoRecord.py -
 (Relies on PyInput_KeyCodes.py)
 Work in progress, but:
 
