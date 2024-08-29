@@ -19,3 +19,5 @@ Run this script, tab over to Syx, it will:
 Set your camera to a corner with a consistent zoom, then move your camera to a consistent set location of your choosing, with some tweaking, begin recording for a set amount of time, then stop recording.  Assuming we have the same shortcuts configured.  Note, Syx is picky when it comes to the keys it's okay with being macrod
 
 So far the final camera frame is down to a couple pixels for consistency, I believe this is due to what frames the final move commands start and end on. Could probably fix with stabilization in post but this is already going to be hilarious to record+process.  Pull requests are open :)
+
+Consider setting a hotspot day 1.
