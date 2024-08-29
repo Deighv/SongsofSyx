@@ -7,59 +7,59 @@ while countdown > 0:
     countdown -= 1
     time.sleep(1)
 
+#region Index Canera Location
+#need to set the camera to a reliable place so we can navigate from there
+pydirectinput.moveTo(2320, 25, 0) #Force into Capital View
+pydirectinput.click()
 
-#region First Criteria: need to be able to set the camera to a reliable place
-#region index camera z level
+#Index camera z level
 HoldAndReleaseKey(N, .02) #zoom 
 HoldAndReleaseKey(N, .02) #make sure we're all the way in
-HoldAndReleaseKey(N, .02) #all the way in if it's stepped out
-HoldAndReleaseKey(N, .02) #all the way in
-HoldAndReleaseKey(N, .02) #allllll the way in
+HoldAndReleaseKey(N, .02) 
+HoldAndReleaseKey(N, .02) 
+HoldAndReleaseKey(N, .02) 
 HoldAndReleaseKey(B, .02) #Zoom Out
 HoldAndReleaseKey(B, .02) #More
-#endregion
 
-#Region Index Camera to SW Corner
+#Index Camera to SW Corner
 print("Animals go in the corner.")
 print("The corner!  Why didn't I think of that?")
-#In case we're over the black box over the SW corner, scoot out a bit
+#In case we're over the black box outside the map, scoot out a bit
 HoldAndReleaseKey2(D, W, 1) 
 #Move to SW Corner to Index Camera Location
 HoldAndReleaseKey2(A, S, 6) 
-#EndRegion
+#endregion
 
-#needs further testing!
-#Panning speed is tied to framerate, if it goes down so will your camera speed, leaving you in a different spot.  You may need to lower your max fps or resolution to get a consistent place
-#even then, work in progress
-#Region Move into Recording Position
-#Move into position with slow pan remapped to J K L I
-print("Move Right for 25 Seconds")
-time.sleep(.2) #Make sure we're ready for commands
-HoldAndReleaseKey(L, 25)
-time.sleep(.2)
-print("Move Up for 8.5 Seconds")
-HoldAndReleaseKey(I, 8.5)
-#EndRegion
+
+#region Move into Recording Position
+pydirectinput.moveTo(2530, 105, 0) #click into place using the minimap, way faster than slow scroll, but also an option and a technique for recording (see history)
+pydirectinput.click()
+pydirectinput.moveTo(2530, 105, 0) #hone in
+pydirectinput.click()
+pydirectinput.moveTo(2530, 85, 0) #hone in
+pydirectinput.click()
+#endregion
+
 
 #Region Start Recording, Start Game, wait, stop recording
+print("It's Recording Time")
 
-
-
-print("Start Recording, Set Speed")
-
-HoldAndReleaseKey(TWO, .01) #Set Speed, gotta do this before you hide the UI
+HoldAndReleaseKey(TWO, .01) #speed
 #Hide the UI
-pydirectinput.moveTo(2400, 230, 0) #I have *no* idea what is up with these pixels, I'm running 4k and the game renders internally as 2190x1232
+pydirectinput.moveTo(2400, 230, 0) #Not sure what's up with these pixel values, I'm running 4k and we're aiming for the right bar
 pydirectinput.click()
+#HoldAndReleaseKey(F12, .01) #testing positioning with a screenshot
 HoldAndReleaseKey(LEFT_BRACKET, .01) #Record if your record button is [
-time.sleep(5) #Record for this long, 5 for testing
-HoldAndReleaseKey(LEFT_BRACKET, .01)
+time.sleep(60) #Record for this long
+HoldAndReleaseKey(LEFT_BRACKET, .01) #stop recording
 pydirectinput.click(button='right') #return UI
-HoldAndReleaseKey(Z, .01) #Set Speed (I set spacebar to speed 1 hence this being Z)
-print("Stop Recording, Stop Speed")
+HoldAndReleaseKey(Z, .01) #stop game (I remapped spacebar, check pyInput for values [SPACEBAR])
+print("Stoped.")
 #EndRegion
 
 #Region Move Files so Quickload will load next larger save/next in line, Repeat process
+#Saves are encoded like:
+#Name-IterationOfSaveProbablyIncludesDaysAgoInHex-Version-0-PopulationCountInHex.save
 ###############
 #EndRegion
 
