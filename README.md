@@ -1,5 +1,7 @@
 Feel free to use these saves and scripts in any way you see fit, I retain no rights or license.  If you'd like to credit me I'd be grateful! https://www.youtube.com/@deighv
 
+Add me on Discord if you'd like to get any of these things set up: deighv.
+
 ## Scripts:
 
 ### autoCommit.ps1 -
