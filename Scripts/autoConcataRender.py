@@ -21,7 +21,7 @@ while NumberOfClips > 0:
     if os.path.isfile("C:\\Rendering\\output.mkv"):
         print("Found New Output!")
    
-    #Get lowest file name (earliest save that hasn't been moved out)
+    #Get lowest file name (earliest clip that hasn't been moved out)
     nextClip = folderWithRecordings + filenames[0]
     print(filenames[0])
     rollingOutput ="output.mkv"
@@ -42,7 +42,7 @@ while NumberOfClips > 0:
         time.sleep(7) #if that file isn't happening, hang the script
         derp +=1
         if derp > 5:
-            exit
+            quit()
         print("no newOutput.mkv found at " + str(datetime.datetime.now()))    
     print("Found New Output! at " + str(datetime.datetime.now()))
     os.remove("C:\\Rendering\\output.mkv") #We have newOutput.mkv now!
