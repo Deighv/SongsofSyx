@@ -27,7 +27,7 @@ while NumberOfClips > 0:
     nextClip = folderWithRecordings + filenames[0]
     print(filenames[0])
     rollingOutput ="zOutput.mkv"
-    roDuration = math.floor(decimal.Decimal(ffmpeg.probe(rollingOutput)["format"]["duration"]))-1.5 #I think this runs out of video to fade sometimes?
+    roDuration = float(ffmpeg.probe(rollingOutput)["format"]["duration"])-1.5 #I think this runs out of video to fade without the -1.5
     #roTrim = str(roDuration+2) #I don't believe this +2 it had... well, I believe it now
     roDuration = str(roDuration) #lol ffmpeg..
     print("ffmpeg -i "+rollingOutput+" -i " +nextClip+ " -filter_complex ""xfade=offset=" +roDuration+ ":duration=1.5;acrossfade=duration=1.5"" zNewOutput.mkv")
@@ -45,5 +45,4 @@ while NumberOfClips > 0:
     os.remove(folderWithRecordings+"zOutput.mkv") #We have zNewOutput.mkv now!
     shutil.move(nextClip, "C:\\Rendered\\"+filenames[0]) #move our old files aside
     os.rename(folderWithRecordings+"zNewOutput.mkv", folderWithRecordings+"zOutput.mkv")
-    
     print(datetime.datetime.now())
