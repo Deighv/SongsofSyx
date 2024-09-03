@@ -19,43 +19,31 @@ while NumberOfClips > 0:
     print(datetime.datetime.now())
     filenames = next(walk(folderWithRecordings), (None, None, []))[2] 
     #Get list of file names
-    if os.path.isfile("C:\\Rendering\\zOutput.mkv"):
+    if os.path.isfile(folderWithRecordings+"zOutput.mkv"):
         print("Found New Output!")
-   
+    else:
+        quit()   
     #Get lowest file name (earliest clip that hasn't been moved out)
     nextClip = folderWithRecordings + filenames[0]
     print(filenames[0])
     rollingOutput ="zOutput.mkv"
-    roDuration = math.floor(decimal.Decimal(ffmpeg.probe(rollingOutput)["format"]["duration"]))-2 #I think this runs out of video to fade sometimes?
+    roDuration = math.floor(decimal.Decimal(ffmpeg.probe(rollingOutput)["format"]["duration"]))-1.5 #I think this runs out of video to fade sometimes?
     #roTrim = str(roDuration+2) #I don't believe this +2 it had... well, I believe it now
-    #print("Trim Duration is " + str(roTrim))
     roDuration = str(roDuration) #lol ffmpeg..
-    print("roDuration Duration is " + roDuration)
-    print("Clip is up to" + roDuration + " something long")
-    os.system("ffmpeg -i "+rollingOutput+" -i " +nextClip+ " -filter_complex ""xfade=offset=" +roDuration+ ":duration=2;acrossfade=duration=2"" zNewOutput.mkv")
-    #ffmpeg -i 1.mp4 -i 2.mp4 -filter_complex "xfade=offset=4.5:duration=1;acrossfade=duration=1" output.mp4
-    print(nextClip + " is the next clip")
+    print("ffmpeg -i "+rollingOutput+" -i " +nextClip+ " -filter_complex ""xfade=offset=" +roDuration+ ":duration=1.5;acrossfade=duration=1.5"" zNewOutput.mkv")
+    os.system("ffmpeg -i "+rollingOutput+" -i " +nextClip+ " -filter_complex ""xfade=offset=" +roDuration+ ":duration=1.5;acrossfade=duration=1.5"" zNewOutput.mkv")
     #os.system("ffmpeg -i "+rollingOutput+" -i " +nextClip+ " -filter_complex ""[0v][1v]xfade=transition=fade:duration=2:offset=" +roDuration+ "[video];[0:a]atrim=0:"+ roTrim +"[0A];[0A][1:a]acrossfade=d=2:c1=tri:c2=tri[audio]"" -map ""[video]"" -map ""[audio]"" zNewOutput.mkv")  
-
     print("Attempted Concat at " + str(datetime.datetime.now()))
-    derp = 1
-    while not os.path.isfile("C:\\Rendering\\zNewOutput.mkv"):
-        time.sleep(7) #if that file isn't happening, hang the script
+    derp = 0
+    while not os.path.isfile(folderWithRecordings+"zNewOutput.mkv"):
+        time.sleep(1) #if that file isn't happening, hang the script
         derp +=1
-        if derp > 5:
+        if derp > 10:       
+            print("no zNewOutput.mkv found at " + str(datetime.datetime.now()))    
             quit()
-        print("no zNewOutput.mkv found at " + str(datetime.datetime.now()))    
     print("Found New Output! at " + str(datetime.datetime.now()))
-    os.remove("C:\\Rendering\\zOutput.mkv") #We have zNewOutput.mkv now!
-    shutil.move(nextClip, "C:\\Rendered\\"+filenames[0])
-    os.rename("C:\\Rendering\\zNewOutput.mkv", "C:\\Rendering\\zOutput.mkv")
+    os.remove(folderWithRecordings+"zOutput.mkv") #We have zNewOutput.mkv now!
+    shutil.move(nextClip, "C:\\Rendered\\"+filenames[0]) #move our old files aside
+    os.rename(folderWithRecordings+"zNewOutput.mkv", folderWithRecordings+"zOutput.mkv")
     
     print(datetime.datetime.now())
-#Pull In Next Lowest Video  - Check
-#Get Length -Check
-#Run ffmpeg Command on zOutput.mkv to zNewOutput.mkv - Check
-##---Fix ffmpeg command
-#Delete zOutput.mkv - Check
-#Move Lowest Video into Processed Folder - Check
-#Rename zNewOutput.mkv to zOutput.mkv - Check
-#Goto 10
