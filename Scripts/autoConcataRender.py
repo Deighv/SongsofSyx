@@ -27,7 +27,7 @@ while index <= NumberOfRuns: #This will overflow and I know
     output_filename = "output"+str(datetime.datetime.now())+".mkv" #name our output file
     
     fromThis = int((runInBatchesOf*index)) #The number file in the group we want to start at
-    toThis = int(fromthis+runInBatchesOf) #The number file in the group we want to end at
+    toThis = int(fromThis+runInBatchesOf) #The number file in the group we want to end at
     ourFiles = []
     for x in range(fromThis, toThis):
         print(filenamesToStart[x])
