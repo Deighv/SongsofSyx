@@ -16,20 +16,18 @@ folderWithRecordings = "C:\\RecordingsSendIt\\" #this is just the folder we're i
 filenamesToStart = next(walk(folderWithRecordings), (None, None, []))[2]  
 filenamesToStart = [fi for fi in filenamesToStart if fi.endswith(".mkv")] #just the videos
 filenamesToStart = [fi for fi in filenamesToStart if not fi.startswith("output")] #not our outputs
-runInBatchesOf = int(15) #many Filters uses many RAMs, lowered this until CPU was maxed (just below peak ram use)
+runInBatchesOf = int(15) #many Filters uses many RAMs, adjust this until you're using just under your max ram, varies with clip size
 NumberOfClips =  len(filenamesToStart)
-NumberOfRuns = math.floor(NumberOfClips/runInBatchesOf)+1
-
+NumberOfRuns = math.floor(NumberOfClips/runInBatchesOf)
 
 print(NumberOfRuns)
-index = -1
-while index <= NumberOfRuns: 
-    index +=1 
+index = 0
+while index <= NumberOfRuns: #This will overflow and I know
     
-    output_filename = "output"+str(index)+".mkv" #name our output file
+    output_filename = "output"+str(datetime.datetime.now())+".mkv" #name our output file
     
-    fromThis = int(0+(runInBatchesOf*index)) #The number file in the group we want to start at
-    toThis = int(runInBatchesOf+(runInBatchesOf*index)) #The number file in the group we want to end at
+    fromThis = int((runInBatchesOf*index)) #The number file in the group we want to start at
+    toThis = int(fromthis+runInBatchesOf) #The number file in the group we want to end at
     ourFiles = []
     for x in range(fromThis, toThis):
         print(filenamesToStart[x])
@@ -40,7 +38,7 @@ while index <= NumberOfRuns:
         print(datetime.datetime.now(), file=f)
         print("----------------------------------------------------", file=f)
     segments = ourFiles
-    
+    #thanks https://gist.github.com/royshil/369e175960718b5a03e40f279b131788.. although it's still not quite right? Need to just redo from scratch
     # Get the lengths of the videos in seconds
     file_lengths = [
         float(ffmpeg.probe(f)["format"]["duration"])
@@ -95,3 +93,4 @@ while index <= NumberOfRuns:
     print(" ".join(ffmpeg_args))
     # Run FFMPEG
     subprocess.run(ffmpeg_args)
+    index +=1 
