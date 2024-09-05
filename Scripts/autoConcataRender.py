@@ -8,13 +8,15 @@ import numpy as np
 
 fade_duration=1.0
 
-folderWithRecordings = "C:\\RecordingsSendIt\\iMissedTheLastVideo\\" #this is just the folder we're in really..
+folderWithRecordings = "C:\\Folderwithyourrecordingsandthisscript\\" #this is just the folder we're in really..
 filenamesToStart = next(walk(folderWithRecordings), (None, None, []))[2]  
 filenamesToStart = [fi for fi in filenamesToStart if fi.endswith(".mkv")] #just the videos
 filenamesToStart = [fi for fi in filenamesToStart if not fi.startswith("output")] #not our outputs
-runInBatchesOf = int(8) #many Filters uses many RAMs, adjust this until you're using just under your max ram, varies with clip size
+#I did this in multiple runs so it'd be faster and kept compiling the larger clips down, you could just do all the clips in one go and send it
+runInBatchesOf = int(22) #many Filters uses many RAMs, adjust this until you're using just under your max ram, varies with clip size
 NumberOfClips =  len(filenamesToStart)
-NumberOfRuns = math.floor(NumberOfClips/runInBatchesOf)
+NumberOfRuns = math.floor(NumberOfClips/runInBatchesOf) 
+
 
 print(NumberOfRuns)
 index = 0
@@ -89,5 +91,5 @@ while index <= NumberOfRuns: #This can overflow and I know
     # Run FFMPEG
     print(" ".join(ffmpeg_args))
     subprocess.run(ffmpeg_args)
-    index +=1
+    #index +=1
     exit()
