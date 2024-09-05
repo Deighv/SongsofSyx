@@ -1,6 +1,6 @@
 Feel free to use these saves and scripts in any way you see fit, I retain no rights or license.  If you'd like to credit me I'd be grateful! https://www.youtube.com/@deighv
 
-Add me on Discord if you'd like to get any of these things set up: deighv.
+Add me on Discord if you'd like a hand getting any of these things set up: deighv. (with the .)
 
 ## Scripts:
 
@@ -14,12 +14,26 @@ Creates an executable for autoCommit if you want to run it on startup/that's eas
 
 ### autoRecord.py -
 Relies on PyInput_KeyCodes.py
-Work in progress, but:
 
 Run this script, tab over to Syx, it will:
 
-Set your camera to a corner with a consistent zoom, then move your camera to a consistent set location of your choosing, with some tweaking, begin recording for a set amount of time, then stop recording.  Assuming we have the same shortcuts configured.  Note, Syx is picky when it comes to the keys it's okay with being macrod
+Load the alphabetically lowest save from a folder.  
+Sets your Camera to a consistent location by panning to the corner
+Use the minimap to hone into a location (set your pixel values accordingly),
+Then you can perform any number of actions
+  Hide the UI
+  Record
+  Move the Camera along set paths
+  Click on UI Elements
+  Script out building, etc
+  Stop Recording
+After the script will pull in the next lowest save, and repeat the process.
 
-So far the final camera frame is down to a couple pixels for consistency, I believe this is due to what frames the final move commands start and end on. Could probably fix with stabilization in post but this is already going to be hilarious to record+process.  Pull requests are open :)
+### autoConcataRender.py -
+Will pull together the above clips and compile them all with a smooth video and audio transition.  More instructions inside the script.  It's midly clunky but works.
 
-Consider setting a hotspot day 1.
+### drawHearts.py -
+Run and tab into Syx (I just f5 from vscode), example of how to macro the UI and draw things even while the UI is hidden.
+
+### showStats.py
+Similar to above but running through Plebe stats.
