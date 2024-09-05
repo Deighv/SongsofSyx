@@ -20,7 +20,7 @@ print(NumberOfRuns)
 index = 0
 while index <= NumberOfRuns: #This can overflow and I know
     
-    output_filename = "readypls.mkv" #name our output file
+    output_filename = "output.mkv" #name our output file
     
     fromThis = int((runInBatchesOf*index)) #The number file in the group we want to start at
     toThis = int(fromThis+runInBatchesOf) #The number file in the group we want to end at
