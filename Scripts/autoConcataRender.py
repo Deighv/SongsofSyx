@@ -6,8 +6,6 @@ from os import walk
 import ffmpeg
 import numpy as np
 
-fade_duration=1.0
-
 folderWithRecordings = "C:\\Folderwithyourrecordingsandthisscript\\" #this is just the folder we're in really..
 filenamesToStart = next(walk(folderWithRecordings), (None, None, []))[2]  
 filenamesToStart = [fi for fi in filenamesToStart if fi.endswith(".mkv")] #just the videos
