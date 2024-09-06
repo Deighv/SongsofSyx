@@ -50,8 +50,8 @@ while index <= NumberOfRuns: #This can overflow and I know
     files_input = [['-i', f] for f in segments]
 
     #thanks https://gist.github.com/royshil/369e175960718b5a03e40f279b131788
-    #There are bugs in the OP
-    #but thanks to everyone's hard work combined, here we are!
+    #There are bugs in the OP, and in a combination of the fixes/attempts
+    #but thanks to everyone's hard work combined, here we are! <3
     
     # Prepare the filter graph
     video_fades = ""
