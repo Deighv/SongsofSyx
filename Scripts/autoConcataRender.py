@@ -50,8 +50,10 @@ while index <= NumberOfRuns: #This can overflow and I know
     files_input = [['-i', f] for f in segments]
 
     #thanks https://gist.github.com/royshil/369e175960718b5a03e40f279b131788
-    #There are bugs in the OP, and in a combination of the fixes/attempts
-    #but thanks to everyone's hard work combined, here we are! <3
+    #There are bugs in the OP
+    #but thanks to everyone's hard work combined, here we are!
+    #The video graphs were still calculating incorrectly but so close- needs to -1x fade duration on the first fade
+    #and 2x on every other clip
     
     # Prepare the filter graph
     video_fades = ""
@@ -62,21 +64,29 @@ while index <= NumberOfRuns: #This can overflow and I know
     fade_duration = 1.0
     
     for i in range(len(segments) -1):
+        #Video Graph
+
         video_length += file_lengths[i]
-        next_fade_output = "v%d%d" % (i, i + 1) 
-        #Video Graph Basically says, for every added clip, tell it how far into the new clip it's generated to start the filter- which is a moving target for every new clip tacked on
-        #Fade into next clip lasts a second on both clips since they're merging, the offset is going to be the entirety of whatever our total clip length is thus far (total of all our clips minus the total of all our fades)
-        #the first clip only takes off the fade duration once because it didn't blend on its first half, hence the fade_duration*index+1, and on the first run index will be 0, so we're just taking off our fade duration once there
-        #the rest of the code for video graph is lining up the graph with the clips vs timings : [0:v][1:v]xfade=duration=1.0:offset=19.034[v01]; etc
+
+        if(i==0):
+            video_length = video_length - fade_duration #only subract the fade duration once the first clip
+        else:
+            video_length = video_length - fade_duration*2 #on every other clip we need to subtract it from both ends
+        
+        next_fade_output = "v%d%d" % (i, i + 1)
         video_fades += "[%s][%d:v]xfade=duration=1.0:offset=%.3f[%s]; " % \
-            (last_fade_output, i + 1, video_length - fade_duration*(i+1), next_fade_output)
+            (last_fade_output, i + 1, video_length, next_fade_output)
         last_fade_output = next_fade_output
-        # Audio graph: kinda the same, follows suit with the video and doesn't get a specific time, just goes with the same segment
-        # [0:a][1:a]acrossfade=d=1[a01]; etc
-        next_audio_output = "a%d%d" % (i, i + 1)
+
+        #Audio Graph
+        """ next_audio_output = "a%d%d" % (i, i + 1)
         audio_fades += "[%s][%d:a]acrossfade=d=1[%s]%s " % \
             (last_audio_output, i + 1, next_audio_output, ";" if (i+1) < len(segments)-1 else "")
-        last_audio_output = next_audio_output
+        last_audio_output = next_audio_output """
+        
+        next_audio_output = "a%d%d" % (i, i)
+        audio_fades += f"[{last_audio_output}][{i}:a]acrossfade=d=%d[{next_audio_output}];" % (fade_duration)
+        last_audio_output = next_audio_output        
 
     # Assemble the FFMPEG command arguments
     ffmpeg_args = ['ffmpeg', #Linux peeps ['/usr/local/bin/ffmpeg'
@@ -95,4 +105,4 @@ while index <= NumberOfRuns: #This can overflow and I know
     #Run ffmpeg, prepare for takeoff
     subprocess.run(ffmpeg_args) 
     #index +=1 #uncomment for running in batches or it won't loop
-    exit() #comment this or it definitely won't loop
+    exit() #comment this or it definitely won't loop#$#
