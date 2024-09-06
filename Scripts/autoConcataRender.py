@@ -4,7 +4,6 @@ import datetime
 import math
 from os import walk
 import ffmpeg
-import numpy as np
 #This assumes all your clips are the same fps, resolution, etc
 #I need speed more than flexibility
 folderWithRecordings = "C:\\WorkInProgress\\" #Folder with your clips and this script
