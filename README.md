@@ -29,11 +29,10 @@ Then you can perform any number of actions
   Stop Recording
 After the script will pull in the next lowest save, and repeat the process.
 
-### autoConcataRender.py -
-Will pull together the above clips and compile them all with a smooth video and audio transition.  More instructions inside the script.  It's midly clunky but works.
-
 ### drawHearts.py -
 Run and tab into Syx (I just f5 from vscode), example of how to macro the UI and draw things even while the UI is hidden.
 
 ### showStats.py
 Similar to above but running through Plebe stats.
+
+### See Recording Scripts for Managing the Recording Outputs
