@@ -1,6 +1,6 @@
 Feel free to use these saves and scripts in any way you see fit, I retain no rights or license.  If you'd like to credit me I'd be grateful! https://www.youtube.com/@deighv
 
-Add me on Discord if you'd like a hand getting any of these things set up: deighv. (with the .)
+
 
 ## Scripts:
 
@@ -36,3 +36,5 @@ Run and tab into Syx (I just f5 from vscode), example of how to macro the UI and
 Similar to above but running through Plebe stats.
 
 ### See Recording Scripts for Managing the Recording Outputs
+
+Add me on Discord if you'd like a hand getting any of these things set up: deighv. (with the .)
