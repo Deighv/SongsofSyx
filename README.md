@@ -1,3 +1,5 @@
+To download a save, either clone the repository or click on a save and hit 'view raw', and move the contents to your save folder
+
 Feel free to use these saves and scripts in any way you see fit, I retain no rights or license.  If you'd like to credit me I'd be grateful! https://www.youtube.com/@deighv
 
 
