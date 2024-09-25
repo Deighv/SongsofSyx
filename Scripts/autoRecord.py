@@ -7,7 +7,7 @@ from pathlib import Path
 
 timing = .1
 print("Quick, tab over to Syx!")
-countdown = 2
+countdown = 5
 while countdown > 0:
     print(countdown)
     countdown -= 1
