@@ -38,12 +38,16 @@ Great naming, I know.
 
 This script will:
 Reload the same save 25 times, each time going to the same start point, then panning out to record 25 separate scenes- 5 scenes wide by 5 scenes tall
+
 At the end of the script are a series of ffmpeg commands to stitch together those scenes to create one cohesive video
+
 Then, since nothing can play a video with that resolution- although someone *please* try to upload that to Youtube and see what blows up
-There is another ffmpeg script to drop it to 8k
-  If you want to change the start corner from where it records, modify lines 33 and 34
-  The methods there take (Number of Times To Move the Pixels to Move, Number of Pixels to Move)
-  If you go beyond the Number of Pixels to Move I use for either, you'll likely have problems due to camera smoothness, acceleration, something, built into the game, making positioning inconsistent
+
+There is another ffmpeg script to drop it to 8k  
+
+	If you want to change the start corner from where it records, modify lines 33 and 34
+	The methods there take -Number of Times To Move the Pixels to Move, Number of Pixels to Move
+	If you go beyond the Number of Pixels to Move I use for either, you'll likely have problems due to camera smoothness, acceleration, something, built into the game, making positioning inconsistent
 
 This script assumes you're running Syx base resolution of 2130x1232
 I installed that resolution into my monitor using the Nvidia Control Panel so I could use it fullscreen.  I hear this can damage your monitor.  
