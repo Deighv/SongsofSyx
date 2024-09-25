@@ -6,7 +6,7 @@ from os import walk
 from pathlib import Path
 from helperFunctions import *
 import keyboard
-
+#This entire script operates on the assumption you're running Syx base resolution, 2390x1232
 timing = .1
 print("Quick, tab over to Syx!")
 countdown = 5
@@ -83,4 +83,5 @@ while NumberOfSaves <= 25:
 #Commands to stitch together with ffmpeg todo: automate
 #Note, I'm recording bottom left to top right, ffmpeg wants top left to bottom right, so files need to be renamed/input order needs to be reversed
 #ffmpeg -threads 16 -i 01.mkv -i 02.mkv -i 03.mkv -i 04.mkv -i 05.mkv -i 06.mkv -i 07.mkv -i 08.mkv -i 09.mkv -i 10.mkv -i 11.mkv -i 12.mkv -i 13.mkv -i 14.mkv -i 15.mkv -i 16.mkv -i 17.mkv -i 18.mkv -i 19.mkv -i 20.mkv -i 21.mkv -i 22.mkv -i 23.mkv -i 24.mkv -i 25.mkv -filter_complex "xstack=grid=5_5" output.mkv
+#Shrink it because nothing can handle that many pixels:
 #ffmpeg -i output.mkv -s 7680x4320 -c:a copy output2.mkv
