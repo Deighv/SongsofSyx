@@ -6,7 +6,7 @@ from os import walk
 from pathlib import Path
 from helperFunctions import *
 import keyboard
-#This entire script operates on the assumption you're running Syx base resolution, 2390x1232
+#This entire script operates on the assumption you're running Syx base resolution, 2190x1232
 timing = .1
 print("Quick, tab over to Syx!")
 countdown = 5
