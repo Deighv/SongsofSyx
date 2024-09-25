@@ -52,7 +52,7 @@ There is another ffmpeg script to drop it to 8k
 This script assumes you're running Syx base resolution of 2130x1232
 I installed that resolution into my monitor using the Nvidia Control Panel so I could use it fullscreen.  I hear this can damage your monitor.  
 
-Barring that, you can change the hard coded values with some math, or code it out- if a hardcoded x pixel value is 1930, divide that by the max 2190, multiply by your screen width (ie 1080) and round up/down, you'll have a good approximate.  Will need to be done for every hardcoded x and y pixel value.
+Barring that, you can change the hard coded values with some math, or code it out- if a hardcoded x pixel value is 1930, divide that by the max 2190, multiply by your screen width (ie 1920) and round up/down, you'll have a good approximate.  Will need to be done for every hardcoded x and y pixel value.
 
 ### drawHearts.py -
 Run and tab into Syx (I just f5 from vscode), example of how to macro the UI and draw things even while the UI is hidden.
