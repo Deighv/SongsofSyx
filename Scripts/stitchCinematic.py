@@ -11,7 +11,7 @@ while countdown > 0:
     print(countdown)
     countdown -= 1
     time.sleep(1)
-RecordHorizontally = False
+RecordHorizontally = True
 ScreensToRecord = 25
 if not RecordHorizontally:
     ScreensToRecord = 1
@@ -25,7 +25,7 @@ while ScreenNumber <= ScreensToRecord:
     pydirectinput.click(button='right',duration=timing) #enter save
 
     #Index Canera Location
-    
+    #Set Save in initial top left recording position, near top left corner
     #if not RecordHorizontally:
         
     if RecordHorizontally:
