@@ -97,6 +97,7 @@ while ScreenNumber <= ScreensToRecord:
     pydirectinput.click(duration=timing)
     time.sleep(0.1) #wait for click
     HoldAndReleaseKey(F10, timing)
+    #move mouse to game time for time sync
     time.sleep(0.25) #wait for click
     HoldAndReleaseKey2(LEFT_ALT, W, 15)
     time.sleep(15)
