@@ -90,17 +90,18 @@ while ScreenNumber <= ScreensToRecord:
             case 28|29|30:
                 MoveScreenUpxTimes(63,-176) 
 
-    HideUI()    
-    pydirectinput.moveTo(1080,12, 0) #hide cursor glow and get over 1 speed
-    time.sleep(timing)
     
-    pydirectinput.click(duration=timing)
-    time.sleep(0.1) #wait for click
+    time.sleep(timing)
+    HoldAndReleaseKey(SPACE, 35) #play (I've remapped 1 to space and Z to pause as a poor man's nopause)
+    HoldAndReleaseKey(SPACE, 35) #play in slowmo
     HoldAndReleaseKey(F10, timing)
-    #move mouse to game time for time sync
-    time.sleep(0.25) #wait for click
-    HoldAndReleaseKey2(LEFT_ALT, W, 15)
-    time.sleep(15)
+    pydirectinput.moveTo(1080,20, 0) #show gameclock to get time sync to edit to
+    time.sleep(.25) 
+    HideUI()    
+    pydirectinput.moveTo(1,1, 0) #hide cursor glow
+    HoldAndReleaseKey2(LEFT_ALT, W, 35)
+    time.sleep(35)
+    
     HoldAndReleaseKey(F10, timing)
     
 
