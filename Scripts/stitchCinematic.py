@@ -97,8 +97,12 @@ while ScreenNumber <= ScreensToRecord:
     pydirectinput.click(duration=timing)
     time.sleep(0.1) #wait for click
     HoldAndReleaseKey(F10, timing)
-    time.sleep(60)
+    time.sleep(0.25) #wait for click
+    HoldAndReleaseKey2(LEFT_ALT, W, 15)
+    time.sleep(15)
     HoldAndReleaseKey(F10, timing)
+    
+
     #HoldAndReleaseKey(F9, timing) #Trigger 60 Second Replay Buffer
     #clips are exactly 60.0240 long, but have screen dragging? clicks, etc embedded
     #Replay buffer timing seems to drift even worse than manual record
