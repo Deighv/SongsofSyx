@@ -7,7 +7,7 @@ Feel free to use these saves and scripts in any way you see fit, I retain no rig
 ## Scripts:
 
 ### autoCommit.ps1 -
-This will backup every save into a git repo.  Think of the content possibilities when you can go back to every 15 minute increment of your base!  I have 2200 saves from Split River Plains, about 8-9gb in total. Somehow github was okay with this on a free account.  I did this by creating a repo in github, cloning it so the .git folder was in my songsofsyx\saves\saves folder, then running the powershell script inside that folder.  You'll have to log into github via browser so it can piggyback your credentials from there.  I feel like historically that used to be a huge pain but for some reason that's just working for me. Hopefully your mileage does not vary.
+This will backup every save into a git repo.  I did this by creating a repo in github, cloning it so the .git folder was in my songsofsyx\saves\saves folder, then running the powershell script inside that folder.  You'll have to log into github via browser so it can piggyback your credentials from there.  I feel like historically that used to be a huge pain but for some reason that's just working for me. Hopefully your mileage does not vary.
 
 To Do: Rename Saves with Date + Add More Info to them. Add More info to commit message
 
