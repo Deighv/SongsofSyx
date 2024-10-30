@@ -37,6 +37,7 @@ def MoveIntoCorner():
     time.sleep(timing)
 
 def MoveScreenRightxTimes(times, pixels=30):
+    print("moving X")
     while times >= 1:
         pydirectinput.moveTo(1600, 600, 0)
         mouse.press(button='middle')
@@ -47,12 +48,12 @@ def MoveScreenRightxTimes(times, pixels=30):
         times -= 1
 
 def MoveScreenUpxTimes(times, pixels=28): #28 since y is 1232, need evenly divisible
+    print("moving Y")
     while times >= 1:
         pydirectinput.moveTo(1600, 600, 0)
         mouse.press(button='middle')
         time.sleep(timing)
         mouse.move(0, pixels, duration = timing, absolute=False)
-        print("moving")
         time.sleep(timing)
         mouse.release(button='middle')
         times -= 1
@@ -75,7 +76,6 @@ def MoveScreenLeftxTimes(times, pixels=30):
 def HideUI():
     pydirectinput.moveTo(2051, 195, 0) #hide ui
     pydirectinput.click(duration= timing)
-    pydirectinput.moveTo(1095, 616, 0)
     time.sleep(timing)
 
 def ScreenshotWithoutUi():

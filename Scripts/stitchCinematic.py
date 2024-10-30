@@ -3,31 +3,35 @@ from PyInput_KeyCodes import *
 from pathlib import Path
 from helperFunctions import *
 import keyboard
-#This entire script operates on the assumption you're running Syx base resolution, 2190x1232
+#This entire script operates on the assumption 
+#you're running Syx base resolution, 2190x1232
 timing = .1
 print("Quick, tab over to Syx!")
-countdown = 5
+countdown = 10
 while countdown > 0:
     print(countdown)
     countdown -= 1
     time.sleep(1)
-RecordHorizontally = False
+
+#Loads last Save in initial top left recording position, must be nearish top left corner
+#This records about 685x385 tiles
+#Also when you load your save it'll be in a slightly different place than where you saved but its consistent lol
+#Record Horizontally or Vertically
+RecordHorizontally = True    
 ScreensToRecord = 25
 if not RecordHorizontally:
-    ScreensToRecord = 1
+    ScreensToRecord = 30
 ScreenNumber = 1
 while ScreenNumber <= ScreensToRecord:
     print("On Screen "+ str(ScreenNumber)) 
     
-    print("Load our Save")
+    print("Load Save")
     HoldAndReleaseKey(F6, timing) #Load our most recent save
     time.sleep(11) #Wait for save to load
-    pydirectinput.click(button='right',duration=timing) #enter save
+    pydirectinput.click(duration=timing) #enter save
 
-    #Index Canera Location
-    
-    #if not RecordHorizontally:
-        
+    #if RecordHorizontally:
+    #could use quicksave/quickload    
     if RecordHorizontally:
         match ScreenNumber: #move over X
             case 1|6|11|16|21: #On the first run, we're in the right spot
@@ -45,7 +49,7 @@ while ScreenNumber <= ScreensToRecord:
             case 1|2|3|4|5: #On the first run, we're in the right spot
                 print("Good Y")
             case 6|7|8|9|10:
-                MoveScreenUpxTimes(7,-176) #Up One Scene #move over one scene
+                MoveScreenUpxTimes(7,-176) #down One Scene #move over one scene
             case 11|12|13|14|15:
                 MoveScreenUpxTimes(14,-176) #move over two scenes
             case 16|17|18|19|20:
@@ -89,22 +93,30 @@ while ScreenNumber <= ScreensToRecord:
                 MoveScreenUpxTimes(56,-176) 
             case 28|29|30:
                 MoveScreenUpxTimes(63,-176) 
-
-    HideUI()    
-    pydirectinput.moveTo(1080,12, 0) #hide cursor glow and get over 1 speed
-    time.sleep(timing)
     
-    pydirectinput.click(duration=timing)
-    time.sleep(0.1) #wait for click
+    pydirectinput.click(button='right',duration=timing) #make sure the mouse is focused on the screen
+    HoldAndReleaseKey(SPACE, timing) #remapped 1 to space
+    HoldAndReleaseKey(SPACE, timing) #play in slowmo
+    HideUI()
+    time.sleep(timing) #wait for click to end
+    pydirectinput.moveTo(1,1, 0) #hide cursor glow
+    time.sleep(timing)
+    HoldAndReleaseKey(F10, timing) #start recording
+    #pydirectinput.moveTo(1080,40, 0) #show gameclock to get time sync to edit to
+    #time.sleep(1) 
+    #No idea how long you can run this before things become noticeably out of sync
+    HoldAndReleaseKey2(LEFT_ALT, W, 60) #pan up, turn off shadows+drop brightness to 10-15% or you'll get shader artifacting
+    time.sleep(timing)
+    #time.sleep(60) Static
     HoldAndReleaseKey(F10, timing)
-    time.sleep(60)
-    HoldAndReleaseKey(F10, timing)
+    
+
     #HoldAndReleaseKey(F9, timing) #Trigger 60 Second Replay Buffer
     #clips are exactly 60.0240 long, but have screen dragging? clicks, etc embedded
     #Replay buffer timing seems to drift even worse than manual record
     print("Saving")
     pydirectinput.click(button='right',duration=timing) #return UI to accept keeb commands
-    HoldAndReleaseKey(Z, timing)
+    HoldAndReleaseKey(Z, timing) #remapped Z to pause
     time.sleep(2) #give OBS a few
     print("Saved")
     print("goto 10") 
